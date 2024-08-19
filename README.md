@@ -1,4 +1,5 @@
 # 11 Express.js: Note Taker
+<img width="953" alt="Note-Taker-Example" src="https://github.com/user-attachments/assets/afbf5c44-0737-448a-93d9-f3876fa83263">
 
 ## Deployed Link
 
