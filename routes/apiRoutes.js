@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-//const uuid = require('uuid');
+
 
 router.get('/api/notes', (req, res) => {
     // Read the db.json file
-    fs.readFile('db.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname,'../db/db.json'), 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -22,7 +22,7 @@ router.get('/api/notes', (req, res) => {
 
 router.post('/api/notes', (req, res) => {
     // Read the db.json file
-    fs.readFile('db.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname,'../db/db.json'), 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -45,7 +45,7 @@ router.post('/api/notes', (req, res) => {
         notes.push(newNote);
 
         // Write the updated notes array to the db.json file
-        fs.writeFile('db.json', JSON.stringify(notes), 'utf8', (err) => {
+        fs.writeFile(path.join(__dirname,'../db/db.json'), JSON.stringify(notes), 'utf8', (err) => {
             if (err) {
                 console.error(err);
                 return res.status(500).json({ error: 'Internal Server Error' });
@@ -59,7 +59,7 @@ router.post('/api/notes', (req, res) => {
 
 router.delete('/api/notes/:id', (req, res) => {
     // Read the db.json file
-    fs.readFile('db.json', 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname,'../db/db.json'), 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -80,7 +80,7 @@ router.delete('/api/notes/:id', (req, res) => {
         notes.splice(noteIndex, 1);
 
         // Write the updated notes array to the db.json file
-        fs.writeFile('db.json', JSON.stringify(notes), 'utf8', (err) => {
+        fs.writeFile(path.join(__dirname,'..db/db.json'), JSON.stringify(notes), 'utf8', (err) => {
             if (err) {
                 console.error(err);
                 return res.status(500).json({ error: 'Internal Server Error' });
